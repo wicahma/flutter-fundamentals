@@ -11,28 +11,17 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  TextEditingController textController = TextEditingController();
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
-              title: const Text(
-                  "Latihan Shared Preference & Double Question Mark")),
-          body: Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Nama"),
-                ),
-              ),
-            ],
-          ))),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text("Provider State Management",
+              style: TextStyle(color: Colors.black)),
+        ),
+        body: Center(child: Text("data")),
+      ),
     );
   }
 }

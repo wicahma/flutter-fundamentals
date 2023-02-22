@@ -26,6 +26,7 @@ class UserCard extends StatelessWidget {
             image: NetworkImage(avatar!),
           ),
         ),
+        const SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Text>[

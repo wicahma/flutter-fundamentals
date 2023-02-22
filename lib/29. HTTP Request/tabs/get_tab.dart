@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:first_app/29.%20HTTP%20Request/get_model.dart';
 import 'package:first_app/29.%20HTTP%20Request/user_card.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,6 @@ class _GetTabState extends State<GetTab> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
 
   @override
@@ -29,8 +30,8 @@ class _GetTabState extends State<GetTab> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
-          Text(
+        children: <Widget>[
+          const Text(
             'GET REQUEST',
             textAlign: TextAlign.start,
             style: TextStyle(
@@ -39,10 +40,23 @@ class _GetTabState extends State<GetTab> {
               fontFamily: "Monument",
             ),
           ),
-          SizedBox(height: 20),
-          
-          UserCard("12", "Teguh Dwi Cahya Kusuma", "teguh.dc.kusuma@gmail.com",
-              "https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg")
+          const SizedBox(height: 20),
+          ElevatedButton(
+              onPressed: () {
+                Get.connectToAPI(1.toString()).then((value) {
+                  setState(() {
+                    getResult = value;
+                  });
+                });
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.amber),
+              ),
+              child: const Text("GET")),
+          (getResult != null)
+              ? UserCard(getResult!.id!, getResult!.fullName!,
+                  getResult!.email!, getResult!.avatar!)
+              : const Text("No Data"),
         ],
       ),
     );
